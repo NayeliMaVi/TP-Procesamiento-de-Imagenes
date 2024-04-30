@@ -42,20 +42,20 @@ for i, (nombre_d1, imagen_d1) in enumerate(imagenes_dataset1):
     nombre_d2, imagen_d2 = imagenes_dataset2[i]
 
     # Calcular los histogramas normalizados para las imágenes
-    hist_r_perro, hist_g_perro, hist_b_perro = extraerHistogramaNormalizado(imagen_d1)
-    hist_r_gato, hist_g_gato, hist_b_gato = extraerHistogramaNormalizado(imagen_d2)
+    hist_r_d1, hist_g_d1, hist_b_d1 = extraerHistogramaNormalizado(imagen_d1)
+    hist_r_d2, hist_g_d2, hist_b_d2 = extraerHistogramaNormalizado(imagen_d2)
 
     # Calcular la similitud de coseno para cada canal de color
-    similarity_r = similitudCoseno(hist_r_perro, hist_r_gato)
-    similarity_g = similitudCoseno(hist_g_perro, hist_g_gato)
-    similarity_b = similitudCoseno(hist_b_perro, hist_b_gato)
+    similaridad_r = similitudCoseno(hist_r_d1, hist_r_d2)
+    similaridad_g = similitudCoseno(hist_g_d1, hist_g_d2)
+    similaridad_b = similitudCoseno(hist_b_d1, hist_b_d2)
 
     # Similitud general promediada entre los canales de color
-    overall_similarity = (similarity_r + similarity_g + similarity_b) / 3
+    similaridadProm = (similaridad_r + similaridad_g + similaridad_b) / 3
 
     print(f""" Similitud entre  {nombre_d1} y {nombre_d2}:
-        Similitud en el color rojo: {similarity_r}
-        Similitud en el color verde: {similarity_g}
-        Similitud en el color azul: {similarity_b}
-        Similitud promedio del histograma de colores: {overall_similarity}
+        Similitud en el color rojo: {similaridad_r}
+        Similitud en el color verde: {similaridad_g}
+        Similitud en el color azul: {similaridad_b}
+        Similitud promedio del histograma de colores: {similaridadProm}
           """)
